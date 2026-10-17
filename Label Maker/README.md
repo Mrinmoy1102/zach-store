@@ -1,5 +1,7 @@
 # Zach Store Label Maker
 
+> **Demo setup.** In a fresh copy of this repository the app uses `sample-data/Sample_Inventory.xlsx`, which holds demo products and made-up numbers. PDFs built from it are stamped "DEMO DATA". To use it for real, put your own inventory next to the website files as `Zach_Store_Inventory.xlsx`, or pick it with "Change…" in the app. Your real file is git-ignored.
+
 Turns `Zach_Store_Inventory.xlsx` into **Zach Store Item Labels.pdf**, saved in the same folder. The PDF has two parts:
 
 1. An item list with photo, name, type, specs, price and stock. Stock of 5 or fewer is shown in red.
@@ -28,6 +30,8 @@ Add a row to the inventory, in the empty rows above TOTAL, and save. The app the
 3. The store website's photos in `assets`.
 4. A matching product photo from Wikipedia or Wikimedia Commons.
 5. A representative photo of that kind of product, labelled "Representative photo" on the label.
+
+Each web photo is credited on its label (author and licence), and the PDF ends with a "Photo credits" page that has full source links, as the CC BY / BY-SA licences require.
 
 Web photos are saved in `images\web-cache`. To make the app search again, delete the item's file there along with its entry in `index.json`.
 

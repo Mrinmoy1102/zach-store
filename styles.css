@@ -207,6 +207,7 @@ legend.step-title { float: left; width: 100%; padding: 0; }
 .grid-160 { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; }
 .card-fields { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 14px; }
 .note { margin: 0; font-size: 14px; color: var(--color-neutral-700); }
+.note.demo-only, .confirm .note.demo-only { font-size: 13px; color: var(--color-accent-700); }
 .place-btn { justify-content: space-between; padding: 16px; font-size: 17px; }
 .summary { background: var(--color-surface) !important; padding: 28px 24px; display: flex; flex-direction: column; gap: 16px; }
 .summary-lines { display: flex; flex-direction: column; border-top: 2px solid var(--color-divider); }

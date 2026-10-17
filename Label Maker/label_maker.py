@@ -11,6 +11,7 @@ import json
 import os
 import re
 import time
+import urllib.parse
 from dataclasses import dataclass, field
 from datetime import datetime
 from pathlib import Path
@@ -120,6 +121,7 @@ class Item:
     image_hint: str = ""                 # path or URL from the sheets, if given
     photo: Path | None = None
     photo_note: str = ""                 # e.g. "Representative photo · Wikimedia Commons"
+    credit: dict = field(default_factory=dict)   # author / license / source for web photos
 
 
 def _norm(text) -> str:
@@ -372,6 +374,23 @@ def _commons_photo(session, name: str) -> tuple[str, str] | None:
     return None
 
 
+def _commons_credit(session, url: str) -> dict:
+    """Author, licence and source page for a Wikimedia image URL (needed for CC BY / BY-SA attribution)."""
+    path = urllib.parse.urlparse(url).path
+    m = re.search(r"/commons/thumb/[0-9a-f]/[0-9a-f]{2}/([^/]+)/", path) or re.search(r"/commons/[0-9a-f]/[0-9a-f]{2}/([^/]+)$", path)
+    if not m:
+        return {}
+    data = _get_json(session, "https://commons.wikimedia.org/w/api.php", {
+        "action": "query", "format": "json", "titles": "File:" + urllib.parse.unquote(m.group(1)),
+        "prop": "imageinfo", "iiprop": "extmetadata|url"})
+    page = next(iter(data.get("query", {}).get("pages", {}).values()), {})
+    info = (page.get("imageinfo") or [{}])[0]
+    meta = info.get("extmetadata", {})
+    clean = lambda k: re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", meta.get(k, {}).get("value", ""))).strip()
+    return {"author": clean("Artist") or "Unknown author", "license": clean("LicenseShortName") or "see source",
+            "source": info.get("descriptionurl", "")}
+
+
 def _generic_topic(item: Item) -> str | None:
     hay = f"{item.name} {item.type}".lower()
     for words, topic in GENERIC_TOPICS:
@@ -424,6 +443,12 @@ def find_photo(item: Item, session, cache: dict, web: dict, log) -> tuple[Path |
     hit = cache.get(key)
     if hit:
         if hit.get("file") and Path(hit["file"]).exists():
+            if "credit" not in hit and hit.get("url") and web["ok"]:
+                try:  # photos saved before credits were recorded
+                    hit["credit"] = _commons_credit(session, hit["url"])
+                except requests.RequestException:
+                    pass
+            item.credit = hit.get("credit", {})
             return Path(hit["file"]), hit.get("note", "")
         if not hit.get("file") and time.time() - hit.get("checked", 0) < MISS_RETRY_SECONDS:
             return None, ""
@@ -437,7 +462,13 @@ def find_photo(item: Item, session, cache: dict, web: dict, log) -> tuple[Path |
             url, source = found
             path = _download_image(session, url, CACHE_DIR / _safe_filename(item.name))
             note = f"{note_prefix} · {source}"
+            try:
+                item.credit = _commons_credit(session, url)
+            except requests.RequestException:
+                item.credit = {}
             cache[key] = {"file": str(path), "note": note, "url": url}
+            if item.credit:
+                cache[key]["credit"] = item.credit
             log(f"Found a web photo for {item.name} ({note}).")
             return path, note
     except (requests.ConnectionError, requests.Timeout) as e:
@@ -512,6 +543,40 @@ def _header_footer(canvas, doc):
     canvas.restoreState()
 
 
+def _short_credit(item: Item) -> str:
+    """Caption under a web photo, e.g. "Photo: Maksdroider · CC BY-SA 4.0"."""
+    prefix = item.photo_note.split(" · ")[0]
+    if not item.credit:
+        return item.photo_note
+    author = item.credit.get("author", "")
+    author = author if len(author) <= 28 else author[:26].rstrip() + "…"
+    return f"{prefix}: {author} · {item.credit.get('license', '')}"
+
+
+def _credits_section(items: list[Item], width: float):
+    """Full attribution for every web photo used (required by CC BY / BY-SA licences)."""
+    credited = [it for it in items if it.credit]
+    if not credited:
+        return []
+    head = [Paragraph(t, S_HEAD) for t in ("Item", "Author", "Licence", "Source")]
+    rows = [head] + [[
+        Paragraph(_esc(it.name), S_CELL_B),
+        Paragraph(_esc(it.credit.get("author", "")), S_CELL),
+        Paragraph(_esc(it.credit.get("license", "")), S_CELL),
+        Paragraph(f'<link href="{_esc(it.credit.get("source", ""))}" color="#ae1800">{_esc(it.credit.get("source", ""))}</link>', S_TINY),
+    ] for it in credited]
+    t = Table(rows, colWidths=[42 * mm, 44 * mm, 26 * mm, width - 112 * mm], repeatRows=1)
+    t.setStyle(TableStyle([
+        ("BACKGROUND", (0, 0), (-1, 0), INK), ("VALIGN", (0, 0), (-1, -1), "TOP"),
+        ("LINEBELOW", (0, 1), (-1, -1), 0.5, RULE),
+        ("TOPPADDING", (0, 1), (-1, -1), 4), ("BOTTOMPADDING", (0, 1), (-1, -1), 4),
+    ]))
+    return [PageBreak(), Paragraph("Photo credits", S_TITLE),
+            Paragraph("Photos from Wikipedia / Wikimedia Commons, used under the licences shown. "
+                      "Representative photos show the kind of product, not the exact model.", S_SUB),
+            Spacer(1, 4 * mm), t]
+
+
 def _list_section(items: list[Item], width: float):
     cols = [16 * mm, 22 * mm, 52 * mm, 0, 22 * mm, 13 * mm]
     cols[3] = width - sum(cols)
@@ -556,7 +621,7 @@ def _label(item: Item, w: float, h: float):
     ] + [Paragraph("· " + _esc(s), S_SPEC) for s in specs]
     photo = [_photo_flowable(item, photo_w, photo_w)]
     if item.photo_note:
-        photo += [Spacer(1, 1 * mm), Paragraph(_esc(item.photo_note), S_TINY)]
+        photo += [Spacer(1, 1 * mm), Paragraph(_esc(_short_credit(item)), S_TINY)]
     inner = Table([[KeepInFrame(photo_w, h - pad * 2, photo, mode="shrink"),
                     KeepInFrame(text_w, h - pad * 2, text, mode="shrink")]],
                   colWidths=[photo_w + pad, text_w + pad], rowHeights=[h])
@@ -589,7 +654,7 @@ def build_pdf(items: list[Item], out: Path, source_name: str):
     tmp = out.with_name(out.stem + ".tmp.pdf")
     doc = SimpleDocTemplate(str(tmp), pagesize=A4, leftMargin=14 * mm, rightMargin=14 * mm,
                             topMargin=16 * mm, bottomMargin=16 * mm,
-                            title="Zach Store — Item Labels", author="Zach Store")
+                            title="Zach Store - Item Labels", author="Zach Store", creator="Zach Store Label Maker")
     doc.generated = datetime.now().strftime("%d %b %Y, %H:%M")
     width = A4[0] - doc.leftMargin - doc.rightMargin
 
@@ -600,9 +665,13 @@ def build_pdf(items: list[Item], out: Path, source_name: str):
                   colWidths=[30 * mm, width - 30 * mm])
     title.setStyle(TableStyle([("VALIGN", (0, 0), (-1, -1), "MIDDLE"), ("LEFTPADDING", (0, 0), (-1, -1), 0)]))
 
-    story = [title, Spacer(1, 6 * mm), _list_section(items, width), PageBreak(),
-             Paragraph("Shelf labels", S_TITLE), Paragraph("Cut along the dashed lines.", S_SUB), Spacer(1, 4 * mm),
-             _labels_section(items, width)]
+    demo = []
+    if "sample" in source_name.lower():
+        demo = [Spacer(1, 3 * mm), Paragraph("DEMO DATA — sample products, prices and stock for showcasing the tool.",
+                                             _style("demo", 9, FONT_BOLD, color=ACCENT_DARK))]
+    story = [title, *demo, Spacer(1, 6 * mm), _list_section(items, width), PageBreak(),
+             Paragraph("Shelf labels", S_TITLE), Paragraph("Cut along the dashed lines.", S_SUB), *demo, Spacer(1, 4 * mm),
+             _labels_section(items, width), *_credits_section(items, width)]
     doc.build(story, onFirstPage=_header_footer, onLaterPages=_header_footer)
     os.replace(tmp, out)   # raises PermissionError if a viewer has the PDF locked
 

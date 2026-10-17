@@ -1,5 +1,7 @@
 # Zach Store — retail toolkit for a small electronics shop
 
+> **Demo setup.** Everything in this repository is a demonstration. The products, prices, stock levels, contact details and the "Zach Store" business data are samples. The website's checkout and quote forms don't send, store or charge anything. The Label Maker runs on a demo inventory with made-up costs and sales. No real customer or business data is included.
+
 A phone and laptop shop was keeping its stock in an Excel sheet, rewriting price tags by hand, and had no proper web presence. This project gives the shop three connected pieces:
 
 | | What it is | What it solves |
@@ -42,7 +44,7 @@ The shop edits one spreadsheet, and the printed labels and item list stay up to 
 python -m http.server 5173
 ```
 
-> Checkout and the quote form are front-end only. They validate the input and show a confirmation but don't send anything yet. Going live needs a payment provider (such as Razorpay or Stripe) and a form or email backend.
+> **Demo mode** (`DEMO_MODE = true` in `app.js`) shows a "DEMO SITE" banner and "nothing is sent" notes on the forms. Checkout and the quote form validate the input and show a confirmation, but send nothing. Going live needs a payment provider (such as Razorpay or Stripe) and a form or email backend.
 
 ---
 
@@ -84,6 +86,8 @@ Full sample output: **[docs/sample-labels.pdf](docs/sample-labels.pdf)**
   4. An exact product match on Wikipedia or Wikimedia Commons.
   5. A clearly labelled "representative photo".
   Matching rejects variants, so "iPhone 15" never picks up an "iPhone 15 Pro" photo. Downloads are cached, and the app slows down when Wikimedia asks it to.
+- **Licence-aware:** each web photo carries its author and licence on the label, and the PDF ends with a full "Photo credits" page, as CC BY / BY-SA require.
+- **Demo marker:** PDFs built from the sample inventory are stamped "DEMO DATA".
 - **Reliability:**
   - It waits for a save to finish before reading the file.
   - It retries if the PDF is locked open in a viewer.
@@ -117,4 +121,19 @@ docs/                                           screenshots + sample PDF output
 
 ---
 
-© 2026 Zach Store project. All rights reserved. Shared as a portfolio piece; contact the author about using or adapting it. Product photos found by the Label Maker come from Wikipedia and Wikimedia Commons under their own licences.
+## Security & privacy
+
+- **No secrets in the repo.** There are no API keys, tokens or passwords; neither the site nor the app needs any. Web photo lookups use Wikipedia's public API without an account.
+- **No real business data.** The real inventory, specs sheet, generated PDFs, app logs and settings are excluded by `.gitignore`. Only the demo workbook in `sample-data/` is published, and its file metadata has been cleared.
+- **The website sends nothing.** There is no backend, analytics, cookies or tracking. The only third-party request is the Archivo font from Google Fonts. The cart lives in the visitor's own browser (`localStorage`). Card fields have autofill turned off and carry a "demo, don't enter real cards" notice, so a visitor's saved card is never offered on the demo.
+- **The Label Maker stays local.** It reads and writes files on the shop PC only. Its only network calls fetch product photos from Wikipedia/Wikimedia, and downloaded images are checked and re-encoded before use.
+- **Going live would need:** a payment provider's hosted checkout (so card data never touches this site), a form backend with spam protection, HTTPS (GitHub Pages provides it), and replacing all demo content.
+
+## Copyright, licences & credits
+
+- **This project's code and design:** © 2026 Zach Store project. All rights reserved. It is published to show the work. Viewing it is welcome, but copying, redistributing or reusing it needs written permission from the author. Ask about licensing or a similar build for your business.
+- **Third-party material keeps its own licence:**
+  - Wikimedia photos in the sample PDF are under CC BY-SA, CC BY, CC0 or public domain. Authors and licences are listed in **[docs/CREDITS.md](docs/CREDITS.md)** and on the PDF's "Photo credits" page.
+  - The Archivo font is under the SIL Open Font License.
+  - The Python libraries keep their own open-source licences.
+- **Trademarks:** brand and product names are the property of their owners and are used only to describe sample products. No affiliation or endorsement is implied.

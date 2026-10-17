@@ -3,7 +3,9 @@
   'use strict';
 
   // ── Config ────────────────────────────────────────────────────────────────
-  const SHOW_DRAFT_BANNER = true; // set to false once placeholder content is confirmed
+  // Demo setup: shows the "DEMO SITE" banner and the "nothing is sent" notes on forms.
+  // Set to false only once real products, contact details, payments and form delivery are in place.
+  const DEMO_MODE = true;
   const W1_PRICE = 1899;
   const BULK_MIN = 8;
   const BULK_RATE = 0.1;
@@ -432,7 +434,7 @@
 
   // ── Boot ──────────────────────────────────────────────────────────────────
   if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-  if (!SHOW_DRAFT_BANNER) $('#draft-banner').remove();
+  if (!DEMO_MODE) $$('#demo-banner, .demo-only').forEach(el => el.remove());
   setText('[data-w1-price]', fmt(W1_PRICE));
   setText('[data-w1-bulk]', fmt(W1_PRICE * (1 - BULK_RATE)));
   applyRoute(false);
