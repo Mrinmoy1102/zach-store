@@ -1,0 +1,24 @@
+# ── Private business data (never commit) ──
+# The real inventory has purchase costs, sales counts and profit.
+Zach_Store_Inventory.xlsx
+Item Specs.xlsx
+*Item Labels*.pdf
+*.tmp.pdf
+~$*.xlsx
+
+# ── Local app state ──
+Label Maker/config.json
+Label Maker/*.log
+Label Maker/images/*
+!Label Maker/images/.gitkeep
+__pycache__/
+*.pyc
+
+# ── Local tooling / source exports ──
+.claude/
+*.zip
+
+# ── OS clutter ──
+Thumbs.db
+desktop.ini
+.DS_Store
