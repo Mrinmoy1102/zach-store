@@ -1,247 +1,485 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-IN">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Zach Store — Phones and laptops, priced plainly</title>
-<meta name="description" content="Phones and laptops with honest prices, complete spec sheets and side-by-side comparisons. Chennai, Tamil Nadu.">
-<link rel="icon" type="image/png" href="./assets/zach-logo-mark.png">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Zach Store, Chennai: phones and laptops with the full price on every label</title>
+<meta name="description" content="Phone and laptop shop in Chennai, Tamil Nadu. Complete spec sheets, full prices, side-by-side comparison, store pickup in 2 hours and a 1-year warranty handled in store.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#0E0D0C">
+<meta name="geo.region" content="IN-TN">
+<meta name="geo.placename" content="Chennai">
+<!-- Add once the domain is live:
+<link rel="canonical" href="https://YOUR-DOMAIN/">
+<meta property="og:url" content="https://YOUR-DOMAIN/"> -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Zach Store">
+<meta property="og:locale" content="en_IN">
+<meta property="og:title" content="Zach Store, Chennai: phones and laptops, priced in full">
+<meta property="og:description" content="Complete spec sheets, the whole price on every label, and a 1-year warranty handled at our Chennai counter.">
+<meta property="og:image" content="./assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The MUSONY W1 laptop on a dark table">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="64x64" href="./assets/favicon-64.png">
+<link rel="apple-touch-icon" href="./assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="./modernist.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="preload" as="image" href="./assets/w1-plate.webp" type="image/webp" fetchpriority="high">
+<link rel="stylesheet" href="./scrollcraft.css">
 <link rel="stylesheet" href="./styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ElectronicsStore",
+      "@id": "#store",
+      "name": "Zach Store",
+      "description": "Phone and laptop shop in Chennai with complete spec sheets, full prices, store pickup and a 1-year warranty handled in store.",
+      "logo": "./assets/zach-logo-mark.png",
+      "image": "./assets/w1-plate.jpg",
+      "address": { "@type": "PostalAddress", "addressLocality": "Chennai", "addressRegion": "Tamil Nadu", "addressCountry": "IN" },
+      "currenciesAccepted": "USD",
+      "paymentAccepted": "Credit card, UPI, Cash on delivery",
+      "priceRange": "$15 to $1,899"
+    },
+    { "@type": "WebSite", "@id": "#site", "name": "Zach Store", "publisher": { "@id": "#store" } },
+    { "@type": "ItemList", "name": "The Zach Store collection", "numberOfItems": 8, "itemListElement": [
+      { "@type": "ListItem", "position": 1, "item": { "@type": "Product", "@id": "#p-mouse", "name": "Wireless mouse", "category": "Computer accessories", "description": "Wireless mouse with a 2.4 GHz USB receiver. One AA battery lasts about 12 months.", "offers": { "@type": "Offer", "price": "15.00", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "itemCondition": "https://schema.org/NewCondition", "seller": { "@id": "#store" } } } },
+      { "@type": "ListItem", "position": 2, "item": { "@type": "Product", "@id": "#p-sleeve", "name": "Laptop sleeve 15.6 inch", "category": "Laptop bags and sleeves", "description": "Padded, water-resistant sleeve for laptops up to 15.6 inches.", "offers": { "@type": "Offer", "price": "19.00", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "itemCondition": "https://schema.org/NewCondition", "seller": { "@id": "#store" } } } },
+      { "@type": "ListItem", "position": 3, "item": { "@type": "Product", "@id": "#p-charger", "name": "65 W USB-C charger", "category": "Chargers", "description": "65 W USB-C Power Delivery charger for phones and USB-C laptops.", "offers": { "@type": "Offer", "price": "29.00", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "itemCondition": "https://schema.org/NewCondition", "seller": { "@id": "#store" } } } },
+      { "@type": "ListItem", "position": 4, "item": { "@type": "Product", "@id": "#p-redmi", "name": "Redmi Note 13 5G", "brand": { "@type": "Brand", "name": "Redmi" }, "category": "Mobile phones", "image": "./assets/redmi-plate.jpg", "description": "6.67 inch 120 Hz AMOLED, Dimensity 6080, 6 GB RAM, 128 GB storage, 5,000 mAh battery, 108 MP main camera.", "offers": { "@type": "Offer", "price": "199.00", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "itemCondition": "https://schema.org/NewCondition", "seller": { "@id": "#store" } } } },
+      { "@type": "ListItem", "position": 5, "item": { "@type": "Product", "@id": "#p-m35", "name": "Samsung Galaxy M35", "brand": { "@type": "Brand", "name": "Samsung" }, "category": "Mobile phones", "description": "6.6 inch 120 Hz Super AMOLED, Exynos 1380, 6 GB RAM, 128 GB storage, 6,000 mAh battery, 50 MP main camera.", "offers": { "@type": "Offer", "price": "229.00", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "itemCondition": "https://schema.org/NewCondition", "seller": { "@id": "#store" } } } },
+      { "@type": "ListItem", "position": 6, "item": { "@type": "Product", "@id": "#p-ideapad", "name": "Lenovo IdeaPad Slim 3", "brand": { "@type": "Brand", "name": "Lenovo" }, "category": "Laptops", "description": "15.6 inch FHD IPS, AMD Ryzen 5 7520U, 8 GB RAM, 512 GB SSD, up to 10 hours of battery.", "offers": { "@type": "Offer", "price": "459.00", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "itemCondition": "https://schema.org/NewCondition", "seller": { "@id": "#store" } } } },
+      { "@type": "ListItem", "position": 7, "item": { "@type": "Product", "@id": "#p-hp", "name": "HP 15s Ryzen 5", "brand": { "@type": "Brand", "name": "HP" }, "category": "Laptops", "image": "./assets/hp-plate.jpg", "description": "15.6 inch FHD, AMD Ryzen 5 5500U 6-core, 16 GB RAM, 512 GB SSD, up to 9 hours of battery.", "offers": { "@type": "Offer", "price": "529.00", "priceCurrency": "USD", "availability": "https://schema.org/LimitedAvailability", "itemCondition": "https://schema.org/NewCondition", "seller": { "@id": "#store" } } } },
+      { "@type": "ListItem", "position": 8, "item": { "@type": "Product", "@id": "#p-w1", "name": "MUSONY W1", "brand": { "@type": "Brand", "name": "MUSONY" }, "category": "Laptops", "image": "./assets/w1-plate.jpg", "description": "16 inch 2.5K 120 Hz IPS workstation laptop with Intel Core Ultra 7, NVIDIA RTX 4090, 120 GB RAM, 99 Wh battery rated up to 15 hours and 140 W charging.", "offers": { "@type": "Offer", "price": "1899.00", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "itemCondition": "https://schema.org/NewCondition", "seller": { "@id": "#store" } } } }
+    ] },
+    { "@type": "FAQPage", "mainEntity": [
+      { "@type": "Question", "name": "Is the price on the label the final price?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Labels show the full price in US dollars and delivery is free. Prices only go down: 10% off any line of 8 or more units, and the code WELCOME5 takes 5% off a first order." } },
+      { "@type": "Question", "name": "Are the products new and genuine?", "acceptedAnswer": { "@type": "Answer", "text": "Every device is sealed stock from authorised channels, and its serial number is printed on your receipt." } },
+      { "@type": "Question", "name": "How does the warranty work?", "acceptedAnswer": { "@type": "Answer", "text": "Every device has a 1-year warranty. Claims are handled by us at the Chennai store." } },
+      { "@type": "Question", "name": "Can I collect my order in the store?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Choose store pickup at checkout. Orders are ready in 2 hours and we call you when it is packed." } },
+      { "@type": "Question", "name": "How can I pay?", "acceptedAnswer": { "@type": "Answer", "text": "By card, by UPI, or on delivery with cash or card." } },
+      { "@type": "Question", "name": "Do you quote and invoice businesses?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Tell us how many units you need and we reply within one business day with a fixed price, a delivery date and a GST invoice." } }
+    ] }
+  ]
+}
+</script>
+<script src="./scrollcraft.js" defer></script>
 <script src="./app.js" defer></script>
 </head>
 <body>
-<div class="site">
+<a class="skip" href="#collection">Skip to the collection</a>
+<div class="sc-grain" aria-hidden="true"></div>
 
-<div class="banner" id="demo-banner"><strong>DEMO SITE</strong> — sample products, prices and contact details. Checkout and quote forms don't send or charge anything; please don't enter real card details.</div>
+<div class="banner" id="demo-banner"><strong>Demo site.</strong> Sample products, prices and contact details. Checkout and quote forms send nothing, so please don't enter real card details.</div>
 
-<header class="site-header">
-  <div class="wrap header-inner">
-    <a href="#/" class="brand" aria-label="Zach Store home"><img src="./assets/zach-logo-mark.png" alt="Zach Store"></a>
-    <nav class="main-nav" aria-label="Main">
-      <a class="nav-link" href="#/shop">Shop</a>
-      <a class="nav-link" href="#/w1">MUSONY W1</a>
-      <a class="nav-link" href="#/business">Business</a>
-      <a class="nav-link" href="#/about" data-page-link="about">Our story</a>
-      <a class="nav-link" href="#contact" data-action="contact">Contact</a>
+<header class="bar">
+  <div class="bar-inner">
+    <a href="#/" class="bar-mark"><img src="./assets/zach-logo-dark.png" width="480" height="289" alt="Zach Store home"></a>
+    <nav class="bar-index" aria-label="Collection index">
+      <a href="#/accessories">Accessories</a>
+      <a href="#/phones">Phones</a>
+      <a href="#/laptops">Laptops</a>
+      <a href="#/business">For teams</a>
+      <a href="#/about" data-page-link="about">Our story</a>
+      <a href="#visit" data-action="contact">Visit</a>
     </nav>
-    <button type="button" class="btn btn-primary cart-btn" data-action="open-cart" aria-haspopup="dialog"><span>Cart</span><span data-cart-count>0</span></button>
+    <button type="button" class="bar-cart" data-action="open-cart" aria-haspopup="dialog">Cart <span class="bar-cart-n" data-cart-count>0</span></button>
   </div>
 </header>
 
 <!-- ═════════════ HOME ═════════════ -->
 <main id="page-home" data-page="home">
-  <section class="section">
-    <div class="wrap grid-lines hero-grid">
+
+  <!-- 1 · Object one. Four planes: light, sun, plate, label. -->
+  <section class="hero" data-sc-act="flow" aria-labelledby="hero-title">
+    <div class="hero-light" data-sc-parallax="1.4" aria-hidden="true"></div>
+    <div class="hero-sun" data-sc-parallax="2.6" aria-hidden="true"></div>
+    <div class="hero-grid">
       <div class="hero-copy">
-        <div class="hero-copy-top">
-          <span class="eyebrow">New — MUSONY W1 — In stock</span>
-          <h1 class="hero-title">Worth every dollar.</h1>
-          <p class="hero-text">Phones and laptops with honest prices, complete spec sheets and side-by-side comparisons. Read the numbers, compare them, then decide.</p>
-        </div>
-        <div class="btn-row">
-          <a href="#/shop" class="btn btn-primary btn-lg"><span>Shop now</span><span aria-hidden="true">→</span></a>
-          <button type="button" class="btn btn-secondary btn-lg" data-action="add" data-id="w1"><span>Add W1 to cart</span><span aria-hidden="true">+</span></button>
-        </div>
+        <h1 id="hero-title" class="hero-title">Phones and laptops in Chennai, priced in full.</h1>
+        <p class="hero-text">Complete spec sheets, the whole price on every label, and a one-year warranty we handle at our own counter.</p>
+        <a href="#/collection" class="btn btn-primary btn-lg">Browse the collection</a>
       </div>
-      <div class="hero-media-col">
-        <div class="hero-media">
-          <img class="grayscale" src="./assets/musony-w1.jpg" alt="MUSONY W1 laptop" fetchpriority="high">
-          <div class="price-tag">
-            <span class="price-tag-label">Zach price</span>
-            <span class="price-tag-value" data-w1-price></span>
+      <figure class="hero-object">
+        <div class="hero-plate" data-sc-parallax="0.6">
+          <div class="hero-plate-tilt" data-sc-tilt="4">
+            <img src="./assets/w1-plate.webp" width="1072" height="675" alt="MUSONY W1 laptop, open, on a dark table" fetchpriority="high">
           </div>
         </div>
-        <div class="grid-lines stats">
-          <div class="stat"><span class="label-sm">GPU</span><span class="stat-value">RTX 4090</span></div>
-          <div class="stat"><span class="label-sm">MEMORY</span><span class="stat-value">120 GB RAM</span></div>
-          <div class="stat"><span class="label-sm">DISPLAY</span><span class="stat-value">16" 2.5K 120 Hz</span></div>
-          <div class="stat"><span class="label-sm">BATTERY</span><span class="stat-value">Up to 15 hr</span></div>
+        <figcaption class="label hero-label" data-sc-parallax="-0.9">
+          <span class="label-no">No. 08 · Laptop · Our own model</span>
+          <span class="label-name">MUSONY W1</span>
+          <span class="label-line">16" 2.5K · Core Ultra 7 · RTX 4090 · 120 GB</span>
+          <span class="label-price"><span class="price" data-w1-price>$1,899</span><span class="stock">In stock</span></span>
+          <button type="button" class="btn btn-quiet" data-action="add" data-id="w1">Add to cart</button>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 2 · The rule. Authored silence before the peak. -->
+  <section class="rule" data-sc-act="flow" aria-label="The rule we work by">
+    <div class="rule-wrap">
+      <figure class="rule-card" data-sc-reveal="up" data-sc-reveal-at="0.18 0.46">
+        <p class="rule-kicker">Taped to the first table</p>
+        <blockquote class="rule-quote"><p>Nobody should leave feeling they overpaid.</p></blockquote>
+        <figcaption class="rule-sign">Zach, on an index card</figcaption>
+      </figure>
+      <p class="rule-after">So every label below shows the full price, every spec sheet is complete, and the ruler under the collection does the sums for you.</p>
+    </div>
+  </section>
+
+  <!-- 3 · The collection. Peak. Prices rise left to right, like the ruler. -->
+  <section id="collection" class="collection" data-sc-act="pan" data-sc-span="5" aria-labelledby="collection-title">
+    <div data-sc-stage class="collection-stage">
+      <div class="rail" data-sc-pan="0.03" id="rail">
+        <div class="rail-lead">
+          <h2 id="collection-title" class="h-section">The collection</h2>
+          <p>Eight things, hung from cheapest to dearest. Set your budget on the ruler and each label shows what you'd keep.</p>
+        </div>
+
+        <article class="obj" id="p-mouse" data-id="mouse" data-price="15" data-cat="ACCESSORY">
+          <div class="obj-plate obj-plate--drawn" aria-hidden="true">
+            <svg viewBox="0 0 200 150"><g class="ink"><path d="M100 26c-26 0-40 20-40 50s14 48 40 48 40-18 40-48-14-50-40-50z"/><path d="M100 26v38M60 70h80" class="thin"/><rect x="96" y="38" width="8" height="16" rx="4"/></g><g class="dim"><path d="M152 26v98M148 26h8M148 124h8"/></g></svg>
+            <span class="obj-plate-note">Drawing, not a photo</span>
+          </div>
+          <div class="label">
+            <span class="label-no">No. 01 · Accessory</span>
+            <h3 class="label-name">Wireless mouse</h3>
+            <dl class="label-facts">
+              <div><dt>Connection</dt><dd>2.4 GHz USB receiver</dd></div>
+              <div><dt>Battery</dt><dd>12 months, one AA</dd></div>
+            </dl>
+            <p class="label-note">Quiet clicks, a year per battery.</p>
+            <p class="label-price"><span class="price">$15</span><span class="stock">In stock</span></p>
+            <p class="obj-budget" data-budget-line></p>
+          </div>
+          <div class="obj-actions">
+            <button type="button" class="btn btn-primary" data-action="add" data-id="mouse">Add to cart</button>
+          </div>
+        </article>
+
+        <article class="obj" id="p-sleeve" data-id="sleeve" data-price="19" data-cat="ACCESSORY">
+          <div class="obj-plate obj-plate--drawn" aria-hidden="true">
+            <svg viewBox="0 0 200 150"><g class="ink"><rect x="34" y="34" width="132" height="86" rx="10"/><path d="M44 46h112" class="thin"/><path d="M156 46v6" /></g><g class="dim"><path d="M34 132h132M34 128v8M166 128v8"/></g></svg>
+            <span class="obj-plate-note">Drawing, not a photo</span>
+          </div>
+          <div class="label">
+            <span class="label-no">No. 02 · Accessory</span>
+            <h3 class="label-name">Laptop sleeve 15.6"</h3>
+            <dl class="label-facts">
+              <div><dt>Fits</dt><dd>Laptops up to 15.6"</dd></div>
+              <div><dt>Material</dt><dd>Padded, water-resistant</dd></div>
+            </dl>
+            <p class="label-note">Protects the screen in a bag for less than a repair costs.</p>
+            <p class="label-price"><span class="price">$19</span><span class="stock">In stock</span></p>
+            <p class="obj-budget" data-budget-line></p>
+          </div>
+          <div class="obj-actions">
+            <button type="button" class="btn btn-primary" data-action="add" data-id="sleeve">Add to cart</button>
+          </div>
+        </article>
+
+        <article class="obj" id="p-charger" data-id="charger" data-price="29" data-cat="ACCESSORY">
+          <div class="obj-plate obj-plate--drawn" aria-hidden="true">
+            <svg viewBox="0 0 200 150"><g class="ink"><rect x="52" y="40" width="58" height="70" rx="12"/><rect x="72" y="100" width="18" height="6" rx="3" class="thin"/><path d="M81 110c0 22 20 26 44 26s38-10 38-30" class="thin"/><rect x="156" y="88" width="14" height="18" rx="3"/></g><g class="dim"><path d="M40 40v70M36 40h8M36 110h8"/></g></svg>
+            <span class="obj-plate-note">Drawing, not a photo</span>
+          </div>
+          <div class="label">
+            <span class="label-no">No. 03 · Accessory</span>
+            <h3 class="label-name">65 W USB-C charger</h3>
+            <dl class="label-facts">
+              <div><dt>Output</dt><dd>65 W, USB-C PD</dd></div>
+              <div><dt>Works with</dt><dd>Phones and USB-C laptops</dd></div>
+            </dl>
+            <p class="label-note">One charger for your phone and your laptop.</p>
+            <p class="label-price"><span class="price">$29</span><span class="stock">In stock</span></p>
+            <p class="obj-budget" data-budget-line></p>
+          </div>
+          <div class="obj-actions">
+            <button type="button" class="btn btn-primary" data-action="add" data-id="charger">Add to cart</button>
+          </div>
+        </article>
+
+        <article class="obj" id="p-redmi" data-id="redmi" data-price="199" data-cat="PHONE">
+          <div class="obj-plate">
+            <img src="./assets/redmi-plate.webp" width="272" height="458" alt="Redmi Note 13 5G in lavender, standing on a table" loading="lazy" style="object-position:center 30%">
+          </div>
+          <div class="label">
+            <span class="label-no">No. 04 · Phone · Zach's pick</span>
+            <h3 class="label-name">Redmi Note 13 5G</h3>
+            <dl class="label-facts">
+              <div><dt>Display</dt><dd>6.67" AMOLED, 120 Hz</dd></div>
+              <div><dt>Processor</dt><dd>Dimensity 6080</dd></div>
+              <div><dt>Memory</dt><dd>6 GB, 128 GB storage</dd></div>
+              <div><dt>Camera</dt><dd>108 MP main</dd></div>
+            </dl>
+            <p class="label-note">120 Hz AMOLED and a 108 MP camera for under $200.</p>
+            <p class="label-price"><span class="price">$199</span><span class="stock">In stock</span></p>
+            <p class="obj-budget" data-budget-line></p>
+          </div>
+          <div class="obj-actions">
+            <button type="button" class="btn btn-primary" data-action="add" data-id="redmi">Add to cart</button>
+            <button type="button" class="btn btn-quiet" data-action="toggle-compare" data-id="redmi" aria-pressed="false">Compare</button>
+          </div>
+        </article>
+
+        <article class="obj" id="p-m35" data-id="m35" data-price="229" data-cat="PHONE">
+          <div class="obj-plate obj-plate--drawn" aria-hidden="true">
+            <svg viewBox="0 0 200 150"><g class="ink"><rect x="74" y="14" width="56" height="122" rx="10"/><rect x="82" y="24" width="16" height="40" rx="8" class="thin"/><circle cx="90" cy="32" r="4"/><circle cx="90" cy="44" r="4"/><circle cx="90" cy="56" r="4"/></g><g class="dim"><path d="M146 14v122M142 14h8M142 136h8"/></g></svg>
+            <span class="obj-plate-note">Drawing, not a photo</span>
+          </div>
+          <div class="label">
+            <span class="label-no">No. 05 · Phone</span>
+            <h3 class="label-name">Samsung Galaxy M35</h3>
+            <dl class="label-facts">
+              <div><dt>Display</dt><dd>6.6" Super AMOLED, 120 Hz</dd></div>
+              <div><dt>Processor</dt><dd>Exynos 1380</dd></div>
+              <div><dt>Memory</dt><dd>6 GB, 128 GB storage</dd></div>
+              <div><dt>Battery</dt><dd>6,000 mAh</dd></div>
+            </dl>
+            <p class="label-note">The biggest battery we sell: two days of use for $30 more than the Redmi.</p>
+            <p class="label-price"><span class="price">$229</span><span class="stock">In stock</span></p>
+            <p class="obj-budget" data-budget-line></p>
+          </div>
+          <div class="obj-actions">
+            <button type="button" class="btn btn-primary" data-action="add" data-id="m35">Add to cart</button>
+            <button type="button" class="btn btn-quiet" data-action="toggle-compare" data-id="m35" aria-pressed="false">Compare</button>
+          </div>
+        </article>
+
+        <article class="obj" id="p-ideapad" data-id="ideapad" data-price="459" data-cat="LAPTOP">
+          <div class="obj-plate obj-plate--drawn" aria-hidden="true">
+            <svg viewBox="0 0 200 150"><g class="ink"><path d="M56 22h88l6 74H50z"/><path d="M60 30h80l5 58H55z" class="thin"/><path d="M50 96h100l22 24H28z"/><path d="M84 110h32" class="thin"/></g><g class="dim"><path d="M28 132h144M28 128v8M172 128v8"/></g></svg>
+            <span class="obj-plate-note">Drawing, not a photo</span>
+          </div>
+          <div class="label">
+            <span class="label-no">No. 06 · Laptop · Zach's pick</span>
+            <h3 class="label-name">Lenovo IdeaPad Slim 3</h3>
+            <dl class="label-facts">
+              <div><dt>Display</dt><dd>15.6" FHD IPS</dd></div>
+              <div><dt>Processor</dt><dd>Ryzen 5 7520U</dd></div>
+              <div><dt>Memory</dt><dd>8 GB, 512 GB SSD</dd></div>
+              <div><dt>Battery</dt><dd>Up to 10 hr</dd></div>
+            </dl>
+            <p class="label-note">A full 512 GB SSD in a slim, light body. Our pick for everyday work.</p>
+            <p class="label-price"><span class="price">$459</span><span class="stock">In stock</span></p>
+            <p class="obj-budget" data-budget-line></p>
+          </div>
+          <div class="obj-actions">
+            <button type="button" class="btn btn-primary" data-action="add" data-id="ideapad">Add to cart</button>
+            <button type="button" class="btn btn-quiet" data-action="toggle-compare" data-id="ideapad" aria-pressed="false">Compare</button>
+          </div>
+        </article>
+
+        <article class="obj" id="p-hp" data-id="hp" data-price="529" data-cat="LAPTOP">
+          <div class="obj-plate">
+            <img src="./assets/hp-plate.webp" width="556" height="318" alt="HP 15s laptop, open, on a table by a window at sunset" loading="lazy">
+          </div>
+          <div class="label">
+            <span class="label-no">No. 07 · Laptop</span>
+            <h3 class="label-name">HP 15s Ryzen 5</h3>
+            <dl class="label-facts">
+              <div><dt>Display</dt><dd>15.6" FHD</dd></div>
+              <div><dt>Processor</dt><dd>Ryzen 5 5500U, 6-core</dd></div>
+              <div><dt>Memory</dt><dd>16 GB, 512 GB SSD</dd></div>
+              <div><dt>Battery</dt><dd>Up to 9 hr</dd></div>
+            </dl>
+            <p class="label-note">Six cores for heavier spreadsheets and multitasking.</p>
+            <p class="label-price"><span class="price">$529</span><span class="stock stock--low">Only 5 left</span></p>
+            <p class="obj-budget" data-budget-line></p>
+          </div>
+          <div class="obj-actions">
+            <button type="button" class="btn btn-primary" data-action="add" data-id="hp">Add to cart</button>
+            <button type="button" class="btn btn-quiet" data-action="toggle-compare" data-id="hp" aria-pressed="false">Compare</button>
+          </div>
+        </article>
+
+        <article class="obj" id="p-w1" data-id="w1" data-price="1899" data-cat="LAPTOP">
+          <div class="obj-plate">
+            <img src="./assets/w1-plate-640.webp" width="640" height="403" alt="MUSONY W1 laptop, open, on a dark table" loading="lazy">
+          </div>
+          <div class="label">
+            <span class="label-no">No. 08 · Laptop · Our own model</span>
+            <h3 class="label-name">MUSONY W1</h3>
+            <dl class="label-facts">
+              <div><dt>Display</dt><dd>16" 2.5K IPS, 120 Hz</dd></div>
+              <div><dt>Processor</dt><dd>Core Ultra 7, RTX 4090</dd></div>
+              <div><dt>Memory</dt><dd>120 GB RAM</dd></div>
+              <div><dt>Battery</dt><dd>99 Wh, up to 15 hr</dd></div>
+            </dl>
+            <p class="label-note">Desktop-class graphics and a 15-hour battery in one machine.</p>
+            <p class="label-price"><span class="price">$1,899</span><span class="stock">In stock</span></p>
+            <p class="obj-budget" data-budget-line></p>
+          </div>
+          <div class="obj-actions">
+            <button type="button" class="btn btn-primary" data-action="add" data-id="w1">Add to cart</button>
+            <button type="button" class="btn btn-quiet" data-action="toggle-compare" data-id="w1" aria-pressed="false">Compare</button>
+          </div>
+        </article>
+
+        <div class="rail-end">
+          <p class="rail-end-title">Not on the wall?</p>
+          <p>Ask for it. We order sealed stock from authorised channels and tell you the full price before you commit.</p>
+          <a href="#visit" data-action="contact" class="link-arrow">Visit or call the shop</a>
         </div>
       </div>
-    </div>
-    <div class="top-rule">
-      <div class="wrap grid-lines perks">
-        <div class="perk"><span class="perk-num">01</span>Full prices in USD, no hidden fees</div>
-        <div class="perk"><span class="perk-num">02</span>10% off orders of 8+ units</div>
-        <div class="perk"><span class="perk-num">03</span>New here? WELCOME5 takes 5% off</div>
-        <div class="perk"><span class="perk-num">04</span>1-year warranty on every device</div>
+
+      <!-- Signature move: the budget ruler -->
+      <div class="ruler" id="ruler">
+        <div class="ruler-head">
+          <label class="ruler-label" for="budget">Your budget</label>
+          <output class="ruler-out" id="budget-out" for="budget">$500</output>
+          <p class="ruler-sum" id="budget-sum" aria-live="polite"></p>
+        </div>
+        <div class="ruler-track">
+          <div class="ruler-scale" id="ruler-scale" aria-hidden="true"></div>
+          <div class="ruler-view" id="ruler-view" aria-hidden="true"></div>
+          <div class="ruler-marks" id="ruler-marks"></div>
+          <input class="ruler-input" type="range" id="budget" min="0" max="1000" step="1" value="700" aria-describedby="budget-sum">
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="shop" class="section">
-    <div class="wrap section-head-wrap">
-      <div class="section-head">
-        <div class="section-head-text">
-          <span class="eyebrow">/01 Shop</span>
-          <h2 class="h-section">Priced plainly. Compared openly.</h2>
-          <p class="lead">Tick "Compare" on any two to four devices to see their specs side by side.</p>
-        </div>
-        <div class="seg-tabs" role="group" aria-label="Filter products" id="filter-tabs"></div>
-      </div>
-    </div>
-    <div class="wrap product-grid-wrap top-rule">
-      <div class="grid-lines product-grid" id="product-grid"></div>
-    </div>
-  </section>
-
-  <section id="w1" class="section">
-    <div class="wrap w1-wrap">
-      <div class="section-head">
-        <div class="section-head-text">
-          <span class="eyebrow">/02 Featured — a Zach Store product</span>
-          <h2 class="w1-title">MUSONY W1</h2>
-          <p class="w1-text">A 16-inch workstation laptop with a desktop-class GPU, workstation-scale memory and a battery that lasts the working day.</p>
-        </div>
-        <div class="w1-price">
-          <span class="w1-price-value" data-w1-price></span>
-          <span class="muted" style="font-size:13px">per unit — <span data-w1-bulk></span> each at 8+</span>
-        </div>
-      </div>
-      <div class="grid-lines w1-grid">
-        <div class="w1-specs">
-          <table class="table">
-            <thead><tr><th scope="col">Spec</th><th scope="col">MUSONY W1</th></tr></thead>
-            <tbody>
-              <tr><td>Processor</td><td>Intel Core Ultra 7 with AI chip</td></tr>
-              <tr><td>Graphics</td><td>NVIDIA RTX 4090</td></tr>
-              <tr><td>Memory</td><td>120 GB RAM</td></tr>
-              <tr><td>Display</td><td>16" 2.5K IPS, 2560 × 1600, 120 Hz</td></tr>
-              <tr><td>Battery</td><td>99 Wh, up to 15 hours</td></tr>
-              <tr><td>Storage</td><td>[TBC]</td></tr>
-              <tr><td>Charging</td><td>140 W, 0–80% in 40 min</td></tr>
-              <tr><td>Keyboard</td><td>Backlit, spill-resistant</td></tr>
-              <tr><td>Build</td><td>Aluminium alloy, 1.3 kg</td></tr>
-              <tr><td>Warranty</td><td>1 year, Zach Store service</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="w1-side">
-          <div class="suits">
-            <span class="eyebrow-muted">Who it suits</span>
-            <div>
-              <div class="suit"><span class="suit-letter">A</span><div><div class="suit-title">Design, video &amp; 3D teams</div><div class="suit-text">RTX 4090 handles renders and edits locally.</div></div></div>
-              <div class="suit"><span class="suit-letter">B</span><div><div class="suit-title">Data &amp; AI work</div><div class="suit-text">120 GB RAM and an on-board AI chip for big datasets.</div></div></div>
-              <div class="suit"><span class="suit-letter">C</span><div><div class="suit-title">Staff who travel</div><div class="suit-text">99 Wh battery — up to 15 hours away from the desk.</div></div></div>
-            </div>
-          </div>
-          <div class="office-cta">
-            <span class="office-cta-label">Equipping an office?</span>
-            <span class="office-cta-text">10% off every order of 8 or more units.</span>
-            <a href="#/business" class="btn btn-invert"><span>Request an office quote</span><span aria-hidden="true">→</span></a>
+  <!-- 4 · The numbers. The photo holds; real figures land. -->
+  <section id="w1" class="w1" data-sc-act="pin" data-sc-span="2.6" aria-labelledby="w1-title">
+    <div data-sc-stage class="w1-stage">
+      <figure class="w1-photo">
+        <img src="./assets/w1-plate.webp" width="1072" height="675" alt="MUSONY W1 laptop seen from the front left, screen on" loading="lazy">
+      </figure>
+      <div class="w1-copy">
+        <h2 id="w1-title" class="h-section" data-sc-cue="0 1.2 0 0">MUSONY W1, in four numbers</h2>
+        <dl class="w1-figs">
+          <div class="w1-fig" data-sc-cue="0.05 1.2 0.1 0"><dt>Memory</dt><dd><span class="w1-num"><span data-sc-count="0 120" data-sc-count-at="0.05 0.2">120</span> GB</span><span class="w1-sub">Workstation-scale RAM for large datasets and 3D scenes</span></dd></div>
+          <div class="w1-fig" data-sc-cue="0.22 1.2 0.12 0"><dt>Battery</dt><dd><span class="w1-num"><span data-sc-count="0 99" data-sc-count-at="0.22 0.37">99</span> Wh</span><span class="w1-sub">Rated up to 15 hours away from the desk</span></dd></div>
+          <div class="w1-fig" data-sc-cue="0.39 1.2 0.15 0"><dt>Charging</dt><dd><span class="w1-num"><span data-sc-count="0 140" data-sc-count-at="0.39 0.54">140</span> W</span><span class="w1-sub">0 to 80% in 40 minutes</span></dd></div>
+          <div class="w1-fig" data-sc-cue="0.56 1.2 0.19 0"><dt>Graphics</dt><dd><span class="w1-num">RTX 4090</span><span class="w1-sub">NVIDIA, for local renders and edits</span></dd></div>
+        </dl>
+        <div class="w1-buy" data-sc-cue="0.7 1.2 0.24 0">
+          <p class="w1-price"><span class="price" data-w1-price>$1,899</span> <span class="muted">per unit, <span data-w1-bulk>$1,709.10</span> each at 8 or more</span></p>
+          <div class="btn-row">
+            <button type="button" class="btn btn-primary" data-action="add" data-id="w1">Add to cart</button>
+            <a href="#/business" class="btn btn-quiet">Quote for a team</a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="business" class="section">
-    <div class="wrap grid-lines biz-grid">
-      <div class="biz-copy">
-        <span class="eyebrow">/03 Business orders</span>
-        <h2 class="h-section">One quote for the whole team.</h2>
-        <p class="lead">Tell us how many units you need. We reply within one business day with a fixed price, delivery date and GST invoice.</p>
-        <div class="estimate" aria-live="polite">
-          <div class="estimate-head"><span>Estimate — MUSONY W1</span><span class="estimate-tier" data-q="tier"></span></div>
-          <div class="estimate-body">
+  <!-- 5 · For teams. The ground wipes from dark to bone. -->
+  <section id="business" class="teams" data-sc-act="flow" aria-labelledby="teams-title">
+    <div class="teams-panel" data-sc-reveal="up" data-sc-reveal-at="0.08 0.42">
+      <div class="teams-grid">
+        <div class="teams-copy">
+          <h2 id="teams-title" class="h-section">One quote for the whole team.</h2>
+          <p class="lead">Tell us how many units you need. We reply within one business day with a fixed price, a delivery date and a GST invoice.</p>
+
+          <div class="estimate" aria-live="polite">
+            <div class="estimate-head"><span>Estimate, MUSONY W1</span><span class="estimate-tier" data-q="tier"></span></div>
             <span class="estimate-total" data-q="total"></span>
-            <span class="muted" style="font-size:14px"><span data-q="units"></span> × <span data-q="unit"></span></span>
+            <span class="estimate-math"><span data-q="units"></span> × <span data-q="unit"></span></span>
             <span class="estimate-note" data-q="note"></span>
           </div>
+
+          <details class="spec">
+            <summary>Full spec sheet, MUSONY W1</summary>
+            <table class="table">
+              <caption class="visually-hidden">MUSONY W1 specification</caption>
+              <tbody>
+                <tr><th scope="row">Processor</th><td>Intel Core Ultra 7 with AI chip</td></tr>
+                <tr><th scope="row">Graphics</th><td>NVIDIA RTX 4090</td></tr>
+                <tr><th scope="row">Memory</th><td>120 GB RAM</td></tr>
+                <tr><th scope="row">Display</th><td>16" 2.5K IPS, 2560 × 1600, 120 Hz</td></tr>
+                <tr><th scope="row">Battery</th><td>99 Wh, up to 15 hours</td></tr>
+                <tr><th scope="row">Storage</th><td class="tbc">To be confirmed</td></tr>
+                <tr><th scope="row">Charging</th><td>140 W, 0 to 80% in 40 min</td></tr>
+                <tr><th scope="row">Keyboard</th><td>Backlit, spill-resistant</td></tr>
+                <tr><th scope="row">Build</th><td>Aluminium alloy, 1.3 kg</td></tr>
+                <tr><th scope="row">Warranty</th><td>1 year, Zach Store service</td></tr>
+              </tbody>
+            </table>
+          </details>
         </div>
-      </div>
-      <div class="biz-form-col">
-        <div class="success" id="quote-success" hidden>
-          <span class="check" aria-hidden="true">✓</span>
-          <h3 style="font-size:30px">Request received.</h3>
-          <p class="muted" style="margin:0;font-size:16px">We'll send a written quote for <span data-q="units"></span> within one business day.</p>
-          <p class="note demo-only">Demo only — this request wasn't sent anywhere.</p>
-          <button type="button" class="btn btn-ghost" style="align-self:flex-start" data-action="quote-reset">Start another quote</button>
-        </div>
-        <form class="stack-form" id="quote-form">
-          <div class="field">
-            <label for="q-units">Number of units</label>
-            <div class="units-row">
-              <input type="range" min="1" max="100" value="10" id="q-range" aria-label="Number of units (slider)">
-              <input class="input" type="number" min="1" max="9999" value="10" id="q-units" required>
+
+        <div class="teams-form">
+          <div class="success" id="quote-success" hidden>
+            <p class="success-mark" aria-hidden="true">Received</p>
+            <h3>Request received.</h3>
+            <p>We'll send a written quote for <span data-q="units"></span> within one business day.</p>
+            <p class="note demo-only">Demo only. This request wasn't sent anywhere.</p>
+            <button type="button" class="btn btn-quiet" data-action="quote-reset">Start another quote</button>
+          </div>
+          <form class="stack-form" id="quote-form" method="post" action="#">
+            <div class="field">
+              <label for="q-units">Number of units</label>
+              <div class="units-row">
+                <input type="range" min="1" max="100" value="10" id="q-range" aria-label="Number of units, slider">
+                <input class="input" type="number" min="1" max="9999" value="10" id="q-units" required>
+              </div>
             </div>
-          </div>
-          <div class="field"><label for="q-company">Company name</label><input class="input" id="q-company" name="company" required placeholder="Acme Pvt Ltd" autocomplete="organization"></div>
-          <div class="two-col">
-            <div class="field"><label for="q-contact">Contact name</label><input class="input" id="q-contact" name="contact" required placeholder="Priya R." autocomplete="name"></div>
-            <div class="field"><label for="q-reach">Work email or phone</label><input class="input" id="q-reach" name="reach" required placeholder="priya@acme.com"></div>
-          </div>
-          <div class="field"><label for="q-notes">Notes (optional)</label><textarea class="input" id="q-notes" name="notes" placeholder="Delivery date, mixed models, configuration…"></textarea></div>
-          <p class="note demo-only">Demo form — requests aren't sent anywhere.</p>
-          <button type="submit" class="btn btn-primary btn-split" style="padding:14px 16px;font-size:16px"><span>Request quote</span><span aria-hidden="true">→</span></button>
-        </form>
+            <div class="field"><label for="q-company">Company name</label><input class="input" id="q-company" name="company" required placeholder="Acme Pvt Ltd" autocomplete="organization"></div>
+            <div class="two-col">
+              <div class="field"><label for="q-contact">Contact name</label><input class="input" id="q-contact" name="contact" required placeholder="Priya R." autocomplete="name"></div>
+              <div class="field"><label for="q-reach">Work email or phone</label><input class="input" id="q-reach" name="reach" required placeholder="priya@acme.com"></div>
+            </div>
+            <div class="field"><label for="q-notes">Notes (optional)</label><textarea class="input" id="q-notes" name="notes" placeholder="Delivery date, mixed models, configuration"></textarea></div>
+            <p class="note demo-only">Demo form. Requests aren't sent anywhere.</p>
+            <button type="submit" class="btn btn-primary btn-lg">Request quote</button>
+          </form>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="section">
-    <div class="wrap trust-head">
-      <span class="eyebrow">/04 Why Zach Store</span>
-      <h2 class="h-section">Fewer promises. Better numbers.</h2>
-    </div>
-    <div class="wrap trust-grid-wrap top-rule">
-      <div class="grid-lines trust-grid">
-        <div class="trust-item"><span class="trust-num">01</span><h3>Fair, fixed pricing</h3><p>Full prices in USD. What you see on the card is what you pay.</p></div>
-        <div class="trust-item"><span class="trust-num">02</span><h3>Genuine products</h3><p>Sealed stock from authorised channels, serial numbers on every receipt.</p></div>
-        <div class="trust-item"><span class="trust-num">03</span><h3>Built for teams</h3><p>10% off orders of 8+ units, invoicing and one contact for the order.</p></div>
-        <div class="trust-item"><span class="trust-num">04</span><h3>1-year warranty</h3><p>Every device is covered, and claims are handled by us in Chennai.</p></div>
+  <!-- 6 · Questions, then the shop's address plate. -->
+  <section id="questions" class="close" data-sc-act="flow" aria-labelledby="faq-title">
+    <div class="close-wrap">
+      <div class="faq">
+        <h2 id="faq-title" class="h-section">Before you pay</h2>
+        <div class="faq-list" data-sc-in data-sc-stagger="60">
+          <details><summary>Is the price on the label the final price?</summary><p>Yes. Labels show the full price in US dollars and delivery is free. Prices only go down: 10% off any line of 8 or more units, and the code WELCOME5 takes 5% off a first order.</p></details>
+          <details><summary>Are the products new and genuine?</summary><p>Every device is sealed stock from authorised channels, and its serial number is printed on your receipt.</p></details>
+          <details><summary>How does the warranty work?</summary><p>Every device has a 1-year warranty. Claims are handled by us at the Chennai store.</p></details>
+          <details><summary>Can I collect my order in the store?</summary><p>Yes. Choose store pickup at checkout. Orders are ready in 2 hours and we call you when it's packed.</p></details>
+          <details><summary>How can I pay?</summary><p>By card, by UPI, or on delivery with cash or card.</p></details>
+          <details><summary>Do you quote and invoice businesses?</summary><p>Yes. Tell us how many units you need and we reply within one business day with a fixed price, a delivery date and a GST invoice. <a href="#/business">Request a quote</a>.</p></details>
+        </div>
       </div>
-    </div>
-  </section>
-
-  <section class="manifesto">
-    <div class="wrap manifesto-inner">
-      <span class="manifesto-label">The rule on Zach's index card</span>
-      <p class="manifesto-quote">Nobody should leave feeling they overpaid.</p>
-      <a href="#/about" class="btn btn-invert"><span>Read our story</span><span aria-hidden="true">→</span></a>
     </div>
   </section>
 </main>
 
 <!-- ═════════════ ABOUT ═════════════ -->
-<main id="page-about" data-page="about" hidden>
-  <section class="section">
-    <div class="wrap about-hero">
-      <span class="eyebrow">Our story</span>
-      <h1 class="about-title">It started with a folding table.</h1>
+<main id="page-about" data-page="about" class="about" hidden>
+  <section class="about-hero">
+    <p class="about-kicker">Our story</p>
+    <h1 class="about-title">It started with a folding table.</h1>
+  </section>
+  <section class="about-story">
+    <div class="story-photo tbc-plate"><span>Photo to come: the original folding table</span></div>
+    <div class="story-text">
+      <p>Zach Store started as a folding table in the corner of a repair shop, with six phones, two laptops and a cardboard box of cables. Zach had one rule, written on an index card taped to the table:</p>
+      <p class="story-rule">Nobody should leave feeling they overpaid.</p>
+      <p>Customers noticed. A woman named Dana came in on a Tuesday needing a phone for her father, who had dropped his third one that year. She had $200, and she said so.</p>
+      <p class="tbc">The rest of the story is still being written up.</p>
     </div>
   </section>
-  <section class="section">
-    <div class="wrap grid-lines story-grid">
-      <div class="story-photo grayscale"><span>[ the original folding table / Zach at the store — B/W ]</span></div>
-      <div class="story-text">
-        <p>Zach Store started as a folding table in the corner of a repair shop, with six phones, two laptops and a cardboard box of cables. Zach had one rule, written on an index card taped to the table:</p>
-        <p class="story-rule">Nobody should leave feeling they overpaid.</p>
-        <p>Customers noticed. A woman named Dana came in on a Tuesday needing a phone for her father, who had dropped his third one that year. She had $200, and she said so.</p>
-        <p class="story-todo">[ Story continues — send the rest and it goes here. ]</p>
-      </div>
-    </div>
-  </section>
-  <section class="section">
-    <div class="wrap values-head"><span class="eyebrow">What hasn't changed since the table</span></div>
-    <div class="wrap values-grid-wrap top-rule">
-      <div class="grid-lines values-grid">
-        <div class="value"><span class="value-sym">$</span><h3>Tell us your budget.</h3><p>We'll show you the best device for it — not the most expensive one.</p></div>
-        <div class="value"><span class="value-sym">=</span><h3>Compare like for like.</h3><p>Every spec sheet is complete, so two products can be read side by side.</p></div>
-        <div class="value"><span class="value-sym">1</span><h3>A year of cover.</h3><p>Every device carries a 1-year warranty, handled by us in Chennai.</p></div>
-      </div>
-    </div>
-  </section>
-  <section>
-    <div class="wrap about-cta">
-      <h2>See what honest pricing looks like.</h2>
-      <div class="btn-row">
-        <a href="#/shop" class="btn btn-primary"><span>Shop now</span><span aria-hidden="true">→</span></a>
-        <a href="#/business" class="btn btn-secondary"><span>Business orders</span><span aria-hidden="true">→</span></a>
-      </div>
+  <section class="about-values" aria-labelledby="values-title">
+    <h2 id="values-title" class="h-section">What hasn't changed since the table</h2>
+    <dl class="values">
+      <div><dt>Tell us your budget.</dt><dd>We'll show you the best device for it, not the most expensive one.</dd></div>
+      <div><dt>Compare like for like.</dt><dd>Every spec sheet is complete, so two products can be read side by side.</dd></div>
+      <div><dt>A year of cover.</dt><dd>Every device carries a 1-year warranty, handled by us in Chennai.</dd></div>
+    </dl>
+    <div class="btn-row">
+      <a href="#/collection" class="btn btn-primary">Browse the collection</a>
+      <a href="#/business" class="btn btn-quiet">Business orders</a>
     </div>
   </section>
 </main>
@@ -249,22 +487,22 @@
 <!-- ═════════════ CHECKOUT ═════════════ -->
 <main id="page-checkout" data-page="checkout" class="checkout" hidden>
   <div class="checkout-head">
-    <a href="#/shop" class="btn btn-ghost">← Continue shopping</a>
+    <a href="#/collection" class="link-back">Continue shopping</a>
     <h1 class="checkout-title">Checkout</h1>
   </div>
 
   <div class="success confirm" id="order-confirm" hidden>
-    <span class="check" aria-hidden="true">✓</span>
+    <p class="success-mark" aria-hidden="true">Confirmed</p>
     <h2>Order <span data-order="no"></span> confirmed.</h2>
     <p>A receipt with serial numbers is on its way. Total paid: <strong data-order="total"></strong>.</p>
-    <p class="note demo-only">Demo only — no order was placed and nothing was charged.</p>
-    <a href="#/" class="btn btn-primary"><span>Back to store</span><span aria-hidden="true">→</span></a>
+    <p class="note demo-only">Demo only. No order was placed and nothing was charged.</p>
+    <a href="#/" class="btn btn-primary">Back to the shop</a>
   </div>
 
-  <div class="grid-lines checkout-grid" id="checkout-body">
-    <form class="checkout-form" id="checkout-form">
+  <div class="checkout-grid" id="checkout-body">
+    <form class="checkout-form" id="checkout-form" method="post" action="#">
       <fieldset class="step">
-        <legend class="step-title">1 — Contact</legend>
+        <legend class="step-title">1. Contact</legend>
         <div class="grid-200">
           <div class="field"><label for="c-name">Full name</label><input class="input" id="c-name" required autocomplete="name"></div>
           <div class="field"><label for="c-phone">Phone</label><input class="input" id="c-phone" type="tel" required autocomplete="tel"></div>
@@ -273,7 +511,7 @@
       </fieldset>
 
       <fieldset class="step">
-        <legend class="step-title">2 — Delivery</legend>
+        <legend class="step-title">2. Delivery</legend>
         <div class="seg-tabs" role="group" aria-label="Delivery method" data-seg="delivery">
           <button type="button" class="seg-btn" data-value="Ship">Ship</button>
           <button type="button" class="seg-btn" data-value="Store pickup">Store pickup</button>
@@ -286,19 +524,19 @@
           </div>
         </fieldset>
         <fieldset class="sub-panel" data-panel="delivery:Store pickup">
-          <p class="note">Collect from our Chennai store — ready in 2 hours. We'll call when it's packed.</p>
+          <p class="note">Collect from our Chennai store. Ready in 2 hours, and we'll call when it's packed.</p>
         </fieldset>
       </fieldset>
 
       <fieldset class="step">
-        <legend class="step-title">3 — Payment</legend>
+        <legend class="step-title">3. Payment</legend>
         <div class="seg-tabs" role="group" aria-label="Payment method" data-seg="pay">
           <button type="button" class="seg-btn" data-value="Card">Card</button>
           <button type="button" class="seg-btn" data-value="UPI">UPI</button>
           <button type="button" class="seg-btn" data-value="Pay on delivery">Pay on delivery</button>
         </div>
         <fieldset class="sub-panel" data-panel="pay:Card">
-          <p class="note demo-only">Demo checkout — use a test number such as 4242 4242 4242 4242. Nothing is charged or sent.</p>
+          <p class="note demo-only">Demo checkout. Use a test number such as 4242 4242 4242 4242. Nothing is charged or sent.</p>
           <div class="card-fields">
             <!-- autocomplete is off so browsers never offer a visitor's saved real card on the demo -->
             <div class="field"><label for="c-card">Card number</label><input class="input" id="c-card" required placeholder="4242 4242 4242 4242" inputmode="numeric" pattern="[0-9 ]{12,23}" title="Card number, digits only" autocomplete="off"></div>
@@ -314,7 +552,7 @@
         </fieldset>
       </fieldset>
 
-      <button type="submit" class="btn btn-primary place-btn" id="place-order"><span>Place order</span><span data-total></span></button>
+      <button type="submit" class="btn btn-primary btn-lg place-btn" id="place-order"><span>Place order</span><span data-total></span></button>
     </form>
 
     <div class="summary">
@@ -323,13 +561,13 @@
       <div class="promo">
         <div class="promo-row">
           <input class="input" id="promo-input" placeholder="Promo code" aria-label="Promo code" autocomplete="off">
-          <button type="button" class="btn btn-secondary" data-action="apply-promo">Apply</button>
+          <button type="button" class="btn btn-quiet" data-action="apply-promo">Apply</button>
         </div>
         <span class="promo-msg" id="promo-msg" aria-live="polite"></span>
       </div>
-      <div class="totals totals-boxed">
+      <div class="totals">
         <div class="total-row"><span>Subtotal</span><span data-subtotal></span></div>
-        <div class="total-row discount" data-bulk-row hidden><span>Bulk 8+ units (−10%)</span><span>−<span data-bulk></span></span></div>
+        <div class="total-row discount" data-bulk-row hidden><span>Bulk, 8 or more units (−10%)</span><span>−<span data-bulk></span></span></div>
         <div class="total-row discount" data-promo-row hidden><span>WELCOME5 (−5%)</span><span>−<span data-promo></span></span></div>
         <div class="total-row"><span>Delivery</span><span>Free</span></div>
         <div class="grand-total"><span>Total (USD)</span><span data-total></span></div>
@@ -338,34 +576,45 @@
   </div>
 </main>
 
-<footer id="contact" class="site-footer">
-  <div class="wrap grid-lines footer-grid">
-    <div class="footer-col footer-brand"><img src="./assets/zach-logo-mark.png" alt="Zach Store"><span class="muted">Phones and laptops, priced plainly.</span></div>
-    <div class="footer-col"><span class="label-sm" style="text-transform:uppercase">Visit</span><strong>Chennai, Tamil Nadu</strong><span>[Street address]</span><span>[Opening hours]</span></div>
-    <div class="footer-col"><span class="label-sm" style="text-transform:uppercase">Contact</span><a href="tel:9XX90XXXX0">9XX90XXXX0</a><span>[email address]</span></div>
-    <div class="footer-col"><span class="label-sm" style="text-transform:uppercase">Policies</span><strong>1-year warranty on all devices</strong><span>[Return policy]</span><span>Invoices for business orders</span></div>
+<!-- The address plate: typeset like a label, and the last thing on every page. -->
+<footer id="visit" class="visit">
+  <div class="visit-wrap">
+    <div class="visit-plate label">
+      <span class="label-no">The shop</span>
+      <h2 class="label-name visit-name">Zach Store, Chennai</h2>
+      <dl class="label-facts">
+        <div><dt>Address</dt><dd><span class="tbc">Street address to be added</span>, Chennai, Tamil Nadu</dd></div>
+        <div><dt>Open</dt><dd class="tbc">Opening hours to be added</dd></div>
+        <div><dt>Phone</dt><dd class="tbc">Phone number to be added</dd></div>
+        <div><dt>Email</dt><dd class="tbc">Email to be added</dd></div>
+        <div><dt>Warranty</dt><dd>1 year on every device, handled here</dd></div>
+        <div><dt>Invoices</dt><dd>GST invoice on business orders</dd></div>
+      </dl>
+      <p class="visit-line">Come and hold it before you buy it. Or <a href="#/collection">browse the collection</a> and pick it up in two hours.</p>
+    </div>
+    <div class="visit-foot">
+      <img src="./assets/zach-logo-dark.png" width="480" height="289" alt="" loading="lazy">
+      <p>© 2026 Zach Store. All prices in US dollars. Product names are trademarks of their owners.</p>
+    </div>
   </div>
-  <div class="wrap footer-bottom"><span>© 2026 Zach Store. All prices in USD.</span><span>Genuine products — Fair pricing — Real support</span></div>
 </footer>
-
-</div>
 
 <!-- compare bar -->
 <div class="compare-bar" id="compare-bar" hidden>
-  <div class="wrap compare-bar-inner">
+  <div class="compare-bar-inner">
     <span class="compare-bar-msg" id="compare-msg" aria-live="polite"></span>
-    <button type="button" class="btn btn-clear" data-action="clear-compare">Clear</button>
-    <button type="button" class="btn btn-primary" data-action="open-compare" id="compare-open-btn"><span>Compare</span><span aria-hidden="true">→</span></button>
+    <button type="button" class="btn btn-quiet" data-action="clear-compare">Clear</button>
+    <button type="button" class="btn btn-primary" data-action="open-compare" id="compare-open-btn">Compare</button>
   </div>
 </div>
 
 <!-- compare modal -->
 <div class="overlay overlay-center" id="compare-overlay" data-overlay="compare" hidden>
   <div class="modal" role="dialog" aria-modal="true" aria-labelledby="compare-title">
-    <div class="panel-head"><h2 id="compare-title">Side by side</h2><button type="button" class="btn btn-secondary btn-icon" data-action="close-compare" aria-label="Close comparison">×</button></div>
+    <div class="panel-head"><h2 id="compare-title">Side by side</h2><button type="button" class="btn-x" data-action="close-compare" aria-label="Close comparison">×</button></div>
     <div class="modal-body">
       <table class="table compare-table" id="compare-table"></table>
-      <p class="modal-foot">Lowest price is highlighted in red.</p>
+      <p class="modal-foot">The lowest price is marked in red.</p>
     </div>
   </div>
 </div>
@@ -373,15 +622,16 @@
 <!-- cart drawer -->
 <div class="overlay overlay-right" id="cart-overlay" data-overlay="cart" hidden>
   <aside class="drawer" role="dialog" aria-modal="true" aria-labelledby="cart-title">
-    <div class="panel-head"><h2 id="cart-title">Cart — <span data-cart-count>0</span></h2><button type="button" class="btn btn-secondary btn-icon" data-action="close-cart" aria-label="Close cart">×</button></div>
+    <div class="panel-head"><h2 id="cart-title">Cart (<span data-cart-count>0</span>)</h2><button type="button" class="btn-x" data-action="close-cart" aria-label="Close cart">×</button></div>
     <div class="drawer-body" id="cart-lines"></div>
     <div class="drawer-foot">
       <div class="total-row"><span>Subtotal</span><span data-subtotal></span></div>
-      <div class="total-row discount" data-bulk-row hidden><span>Bulk 8+ units (−10%)</span><span>−<span data-bulk></span></span></div>
+      <div class="total-row discount" data-bulk-row hidden><span>Bulk, 8 or more units (−10%)</span><span>−<span data-bulk></span></span></div>
       <div class="total-row discount" data-promo-row hidden><span>WELCOME5 (−5%)</span><span>−<span data-promo></span></span></div>
       <div class="drawer-total"><span>Total</span><span data-total></span></div>
+      <p class="drawer-budget" id="drawer-budget"></p>
       <span class="drawer-hint">New customer? Add code WELCOME5 at checkout.</span>
-      <button type="button" class="btn btn-primary btn-block" data-action="checkout" id="cart-checkout"><span>Checkout</span><span aria-hidden="true">→</span></button>
+      <button type="button" class="btn btn-primary btn-block" data-action="checkout" id="cart-checkout">Checkout</button>
     </div>
   </aside>
 </div>

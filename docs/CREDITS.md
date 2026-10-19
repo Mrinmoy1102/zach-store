@@ -18,11 +18,15 @@ The photos were resized and converted to JPEG to fit the labels; they were not o
 
 ## Website images (`assets/`)
 
-The store logo and the MUSONY W1, Redmi Note 13 and HP 15s images were supplied by the project owner for this demo. The repository's licence does not cover them; they remain the property of their owners.
+The store logo and the MUSONY W1, Redmi Note 13 and HP 15s images were supplied by the project owner for this demo. The repository's licence does not cover them; they remain the property of their owners. The `*-plate.*` files, `zach-logo-dark.png`, `og-image.jpg` and the icons are crops and edits of those images (marketing text removed, logo recoloured for a dark background), and the same applies to them.
+
+## Scroll engine
+
+`scrollcraft.js` and `scrollcraft.css` come unmodified from [scroll-craft](https://github.com/nateherkai/scroll-craft) by Nate Herk, used under the MIT License.
 
 ## Fonts
 
-- **Website:** [Archivo](https://fonts.google.com/specimen/Archivo), loaded from Google Fonts under the SIL Open Font License 1.1.
+- **Website:** [Archivo](https://fonts.google.com/specimen/Archivo) and [Geist Mono](https://fonts.google.com/specimen/Geist+Mono), loaded from Google Fonts under the SIL Open Font License 1.1.
 - **PDF:** uses the Segoe UI or Arial font already installed on the Windows PC that generates it. No font files are stored in this repository. As with any PDF, the sample PDF embeds the subset of Segoe UI glyphs it uses, which the font's embedding permissions allow.
 
 ## Libraries (Label Maker)

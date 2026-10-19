@@ -6,7 +6,7 @@ A phone and laptop shop was keeping its stock in an Excel sheet, rewriting price
 
 | | What it is | What it solves |
 |---|---|---|
-| **1. Storefront website** | A fast, mobile-friendly shop site, built from a Claude Design mockup | A branded online catalogue with transparent pricing, comparisons, a cart, checkout and business quotes |
+| **1. Storefront website** | A fast, mobile-friendly shop site with a budget ruler and full-price labels | A branded online catalogue with transparent pricing, comparisons, a cart, checkout and business quotes |
 | **2. Inventory tracker** | An Excel workbook (sample in [`sample-data/`](sample-data)) | One place for models, prices, sales and stock, with automatic profit and low-stock warnings |
 | **3. Label Maker app** | A desktop app ([`Label Maker/`](Label%20Maker)) that reads the inventory | Print-ready item lists and shelf labels, with photos and specs, rebuilt automatically whenever stock changes |
 
@@ -18,25 +18,32 @@ The shop edits one spreadsheet, and the printed labels and item list stay up to 
 
 ![Home page](docs/screenshots/site-home.png)
 
+A dark "showroom" catalogue: every product hangs on the wall with a museum-style label showing its full price and specs. Design brief: [`scrollcraft/builds/zach-store/BRIEF.md`](scrollcraft/builds/zach-store/BRIEF.md).
+
 **Features**
-- **Shop grid with filters:** Phones, Laptops, Accessories, each with the key specs and a short "why it's good value" note.
+- **The collection:** a sideways wall of eight labelled products, cheapest to dearest. Category links (Accessories, Phones, Laptops) jump straight to them.
+- **Budget ruler:** drag it to your budget and every label shows what you'd have left over. Anything over budget steps back in grey, Zach's best-value picks are named, and the budget carries into the cart.
 - **Side-by-side compare** for 2–4 devices, with the lowest price highlighted.
 - **Cart drawer** with quantity controls. The cart is kept between visits.
 - **Discounts applied automatically:** 10% off any line of 8 or more units, plus a `WELCOME5` promo code.
 - **Checkout** with ship or store-pickup and card, UPI or pay-on-delivery, plus input validation (PIN code, card, UPI ID).
-- **Business quote** form with a live estimate as the unit slider moves.
-- **"Our story" page,** a feature page for the shop's own laptop (MUSONY W1), and a footer with contact and policies.
+- **Business quote** form with a live estimate as the unit slider moves, plus the full MUSONY W1 spec sheet.
+- **"Before you pay" questions** (prices, genuine stock, warranty, pickup, payment, invoices) and an address plate for the shop.
 - Responsive down to phone width, keyboard accessible, and respects reduced-motion settings.
 
-| Shop & compare | Featured product | Business quote |
+| The collection and budget ruler | MUSONY W1 in four numbers | Business quote |
 |---|---|---|
-| ![Shop](docs/screenshots/site-shop.png) | ![MUSONY W1](docs/screenshots/site-w1.png) | ![Business quote](docs/screenshots/site-business.png) |
+| ![Collection](docs/screenshots/site-shop.png) | ![MUSONY W1](docs/screenshots/site-w1.png) | ![Business quote](docs/screenshots/site-business.png) |
 
 | Checkout (bulk discount applied) | Our story | Mobile |
 |---|---|---|
 | ![Checkout](docs/screenshots/site-checkout.png) | ![About](docs/screenshots/site-about.png) | ![Mobile](docs/screenshots/site-mobile.png) |
 
-**Tech:** plain HTML, CSS and JavaScript with no framework and no build step. The design-system tokens are in `modernist.css`, the layout in `styles.css`, and the product data and logic in `app.js`. Images were cut from about 9 MB to about 0.6 MB.
+**Product photos** are the supplied posters, cropped and cleaned of their baked-in marketing text (`assets/*-plate.*`). Products without a photo get a line drawing marked "Drawing, not a photo".
+
+**SEO:** every product is plain HTML in `index.html` (readable by search engines without running JavaScript), with `ElectronicsStore`, `Product`/`Offer` and `FAQPage` structured data, Open Graph tags, a share image (`assets/og-image.jpg`) and `robots.txt`.
+
+**Tech:** plain HTML, CSS and JavaScript with no framework and no build step. Layout and theme are in `styles.css`, the product data and logic in `app.js`. Scroll effects come from `scrollcraft.js` / `scrollcraft.css` (vendored, unmodified); the page still works with motion reduced or scripts off.
 
 **Run it:** open `index.html`, or serve the folder:
 
@@ -44,7 +51,9 @@ The shop edits one spreadsheet, and the printed labels and item list stay up to 
 python -m http.server 5173
 ```
 
-> **Demo mode** (`DEMO_MODE = true` in `app.js`) shows a "DEMO SITE" banner and "nothing is sent" notes on the forms. Checkout and the quote form validate the input and show a confirmation, but send nothing. Going live needs a payment provider (such as Razorpay or Stripe) and a form or email backend.
+> **Demo mode** (`DEMO_MODE = true` in `app.js`) shows a "Demo site" banner and "nothing is sent" notes on the forms. Checkout and the quote form validate the input and show a confirmation, but send nothing. Going live needs a payment provider (such as Razorpay or Stripe) and a form or email backend.
+
+**Before going live, fill in:** street address, opening hours, phone, email and GST number (marked "to be added" in the footer), then add them to the JSON-LD in `index.html`; add the canonical URL, `og:url` and a sitemap once the domain exists. Prices are shown in USD while the shop is in Chennai; switch to INR if that's what customers pay in.
 
 ---
 
@@ -101,8 +110,11 @@ Full sample output: **[docs/sample-labels.pdf](docs/sample-labels.pdf)**
 ## Repository layout
 
 ```
-index.html, app.js, styles.css, modernist.css   storefront website
-assets/                                         logo + product photos (web-optimised)
+index.html, app.js, styles.css                  storefront website
+scrollcraft.js, scrollcraft.css                 scroll-effects engine (vendored, unmodified)
+robots.txt                                      crawler rules
+assets/                                         logo, cleaned product plates, icons, share image
+scrollcraft/                                    design brief for the storefront
 Label Maker/                                    desktop app (label_maker.py core, app.pyw window, shortcut installer)
 sample-data/Sample_Inventory.xlsx               demo inventory (fake numbers)
 docs/                                           screenshots + sample PDF output
