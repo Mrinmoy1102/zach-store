@@ -262,19 +262,18 @@ a { color: inherit; }
   background: var(--c-night);
 }
 /* The rail fills the space between the bar and the ruler; cards never overflow it. */
-.rail { align-self: stretch; justify-self: start; width: max-content; min-height: 0; gap: clamp(1.5rem, 2.6vw, 2.75rem); padding: var(--s-2) var(--s-gutter); align-items: stretch; }
+/* Cards keep their full size and hang from just under the bar, so the top is never cut. */
+.rail { align-self: start; justify-self: start; width: max-content; gap: clamp(1.5rem, 2.6vw, 2.75rem); padding: var(--s-4) var(--s-gutter) 0; align-items: flex-start; }
 .rail-lead { align-self: center; width: clamp(16rem, 26vw, 24rem); display: flex; flex-direction: column; gap: var(--s-4); padding-right: var(--s-4); }
 .rail-lead p { color: var(--c-pencil); max-width: 30ch; }
 .rail-end { align-self: center; width: clamp(15rem, 20vw, 19rem); display: flex; flex-direction: column; gap: var(--s-3); font-size: var(--t-sm); color: var(--c-pencil); }
 .rail-end-title { font-size: var(--t-xl); font-weight: var(--w-bold); color: var(--c-bone); }
 .rail-end a { color: var(--c-bone); }
 
-.obj { width: var(--w-obj); min-height: 0; display: flex; flex-direction: column; justify-content: center; gap: var(--s-3); transition: opacity var(--d-open) var(--ease), transform var(--d-open) var(--ease); transform-origin: 50% 60%; }
+.obj { width: var(--w-obj); display: flex; flex-direction: column; gap: var(--s-3); transition: opacity var(--d-open) var(--ease), transform var(--d-open) var(--ease); transform-origin: 50% 60%; }
 /* Plates are flat: the product is the image, the hero owns the depth. */
 .obj-plate {
   position: relative; aspect-ratio: 4 / 3; max-height: 30svh;
-  /* On a short window the photo gives up height first, so nothing is cut. */
-  flex: 0 1 auto; min-height: 5rem;
   border-radius: var(--r); background: var(--c-shelf);
   display: grid; place-items: center;
   transition: filter var(--d-open) var(--ease);
@@ -572,19 +571,20 @@ body.has-compare-bar.on-collection .compare-bar { bottom: 9.5rem; }
 @media (max-width: 900px) and (max-height: 700px) {
   .obj-plate { max-height: 19svh; }
   .obj .label-facts > div:nth-child(n+3) { display: none; }
+  .ruler-sum { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .ruler { padding-block: var(--s-1); }
+  .rail { padding-top: var(--s-2); }
 }
 @media (max-height: 760px) and (min-width: 901px) {
   .obj .label-note { display: none; }
   .obj-plate { max-height: 26svh; }
-}
-/* Very short windows: keep the two key specs; the rest is in Compare. */
-@media (max-height: 640px) and (min-width: 901px) {
-  .obj .label-facts > div:nth-child(n+3) { display: none; }
-  .obj { gap: var(--s-2); }
-  .obj-plate { min-height: 3rem; }
-  .obj-plate-note { display: none; }
-  .ruler { padding-block: var(--s-2); }
-  .ruler-sum { min-height: 0; }
+  /* Short windows: the ruler slims to one line so full-size cards clear it.
+     The per-card "Leaves you" lines still carry the sums; screen readers keep the summary. */
+  .ruler { padding-block: var(--s-1); }
+  .ruler-sum { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .ruler-track { height: 56px; }
+  .rail { padding-top: var(--s-2); }
+  .collection-stage { padding-top: calc(var(--bar-h) + var(--s-2)); }
 }
 
 /* ======================================================= reduced motion == */
