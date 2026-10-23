@@ -81,9 +81,9 @@
   <div class="bar-inner">
     <a href="#/" class="bar-mark"><img src="./assets/zach-logo-dark.png" width="480" height="289" alt="Zach Store home"></a>
     <nav class="bar-index" aria-label="Collection index">
-      <a href="#/accessories">Accessories</a>
-      <a href="#/phones">Phones</a>
-      <a href="#/laptops">Laptops</a>
+      <a href="#/accessories">Accessories<span class="n">3</span></a>
+      <a href="#/phones">Phones<span class="n">2</span></a>
+      <a href="#/laptops">Laptops<span class="n">3</span></a>
       <a href="#/business">For teams</a>
       <a href="#/about" data-page-link="about">Our story</a>
       <a href="#visit" data-action="contact">Visit</a>
@@ -95,10 +95,10 @@
 <!-- ═════════════ HOME ═════════════ -->
 <main id="page-home" data-page="home">
 
-  <!-- 1 · Object one. Four planes: light, sun, plate, label. -->
-  <section class="hero" data-sc-act="flow" aria-labelledby="hero-title">
-    <div class="hero-light" data-sc-parallax="1.4" aria-hidden="true"></div>
-    <div class="hero-sun" data-sc-parallax="2.6" aria-hidden="true"></div>
+  <!-- 1 · Hero, product-shot-led: light, sun, photo and label overlap. Static. -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-light" aria-hidden="true"></div>
+    <div class="hero-sun" aria-hidden="true"></div>
     <div class="hero-grid">
       <div class="hero-copy">
         <h1 id="hero-title" class="hero-title">Phones and laptops in Chennai, priced in full.</h1>
@@ -106,12 +106,10 @@
         <a href="#/collection" class="btn btn-primary btn-lg">Browse the collection</a>
       </div>
       <figure class="hero-object">
-        <div class="hero-plate" data-sc-parallax="0.6">
-          <div class="hero-plate-tilt" data-sc-tilt="4">
-            <img src="./assets/w1-plate.webp" width="1072" height="675" alt="MUSONY W1 laptop, open, on a dark table" fetchpriority="high">
-          </div>
+        <div class="hero-plate">
+          <img src="./assets/w1-plate.webp" width="1072" height="675" alt="MUSONY W1 laptop, open, on a dark table" fetchpriority="high">
         </div>
-        <figcaption class="label hero-label" data-sc-parallax="-0.9">
+        <figcaption class="label hero-label">
           <span class="label-no">No. 08 · Laptop · Our own model</span>
           <span class="label-name">MUSONY W1</span>
           <span class="label-line">16" 2.5K · Core Ultra 7 · RTX 4090 · 120 GB</span>
@@ -123,9 +121,9 @@
   </section>
 
   <!-- 2 · The rule. Authored silence before the peak. -->
-  <section class="rule" data-sc-act="flow" aria-label="The rule we work by">
+  <section class="rule" aria-label="The rule we work by">
     <div class="rule-wrap">
-      <figure class="rule-card" data-sc-reveal="up" data-sc-reveal-at="0.18 0.46">
+      <figure class="rule-card">
         <p class="rule-kicker">Taped to the first table</p>
         <blockquote class="rule-quote"><p>Nobody should leave feeling they overpaid.</p></blockquote>
         <figcaption class="rule-sign">Zach, on an index card</figcaption>
@@ -134,7 +132,7 @@
     </div>
   </section>
 
-  <!-- 3 · The collection. Peak. Prices rise left to right, like the ruler. -->
+  <!-- 3 · The collection: the page's one scroll scene. Prices rise left to right, like the ruler. -->
   <section id="collection" class="collection" data-sc-act="pan" data-sc-span="5" aria-labelledby="collection-title">
     <div data-sc-stage class="collection-stage">
       <div class="rail" data-sc-pan="0.03" id="rail">
@@ -347,34 +345,32 @@
     </div>
   </section>
 
-  <!-- 4 · The numbers. The photo holds; real figures land. -->
-  <section id="w1" class="w1" data-sc-act="pin" data-sc-span="2.6" aria-labelledby="w1-title">
-    <div data-sc-stage class="w1-stage">
-      <figure class="w1-photo">
-        <img src="./assets/w1-plate.webp" width="1072" height="675" alt="MUSONY W1 laptop seen from the front left, screen on" loading="lazy">
-      </figure>
-      <div class="w1-copy">
-        <h2 id="w1-title" class="h-section" data-sc-cue="0 1.2 0 0">MUSONY W1, in four numbers</h2>
-        <dl class="w1-figs">
-          <div class="w1-fig" data-sc-cue="0.05 1.2 0.1 0"><dt>Memory</dt><dd><span class="w1-num"><span data-sc-count="0 120" data-sc-count-at="0.05 0.2">120</span> GB</span><span class="w1-sub">Workstation-scale RAM for large datasets and 3D scenes</span></dd></div>
-          <div class="w1-fig" data-sc-cue="0.22 1.2 0.12 0"><dt>Battery</dt><dd><span class="w1-num"><span data-sc-count="0 99" data-sc-count-at="0.22 0.37">99</span> Wh</span><span class="w1-sub">Rated up to 15 hours away from the desk</span></dd></div>
-          <div class="w1-fig" data-sc-cue="0.39 1.2 0.15 0"><dt>Charging</dt><dd><span class="w1-num"><span data-sc-count="0 140" data-sc-count-at="0.39 0.54">140</span> W</span><span class="w1-sub">0 to 80% in 40 minutes</span></dd></div>
-          <div class="w1-fig" data-sc-cue="0.56 1.2 0.19 0"><dt>Graphics</dt><dd><span class="w1-num">RTX 4090</span><span class="w1-sub">NVIDIA, for local renders and edits</span></dd></div>
-        </dl>
-        <div class="w1-buy" data-sc-cue="0.7 1.2 0.24 0">
-          <p class="w1-price"><span class="price" data-w1-price>$1,899</span> <span class="muted">per unit, <span data-w1-bulk>$1,709.10</span> each at 8 or more</span></p>
-          <div class="btn-row">
-            <button type="button" class="btn btn-primary" data-action="add" data-id="w1">Add to cart</button>
-            <a href="#/business" class="btn btn-quiet">Quote for a team</a>
-          </div>
+  <!-- 4 · MUSONY W1, four real figures. Static. -->
+  <section id="w1" class="w1" aria-labelledby="w1-title">
+    <figure class="w1-photo">
+      <img src="./assets/w1-plate.webp" width="1072" height="675" alt="MUSONY W1 laptop seen from the front left, screen on" loading="lazy">
+    </figure>
+    <div class="w1-copy">
+      <h2 id="w1-title" class="h-section">MUSONY W1, in four numbers</h2>
+      <dl class="w1-figs">
+        <div class="w1-fig"><dt>Memory</dt><dd><span class="w1-num">120 GB</span><span class="w1-sub">Workstation-scale RAM for large datasets and 3D scenes</span></dd></div>
+        <div class="w1-fig"><dt>Battery</dt><dd><span class="w1-num">99 Wh</span><span class="w1-sub">Rated up to 15 hours away from the desk</span></dd></div>
+        <div class="w1-fig"><dt>Charging</dt><dd><span class="w1-num">140 W</span><span class="w1-sub">0 to 80% in 40 minutes</span></dd></div>
+        <div class="w1-fig"><dt>Graphics</dt><dd><span class="w1-num">RTX 4090</span><span class="w1-sub">NVIDIA, for local renders and edits</span></dd></div>
+      </dl>
+      <div class="w1-buy">
+        <p class="w1-price"><span class="price" data-w1-price>$1,899</span> <span class="muted">per unit, <span data-w1-bulk>$1,709.10</span> each at 8 or more</span></p>
+        <div class="btn-row">
+          <button type="button" class="btn btn-primary" data-action="add" data-id="w1">Add to cart</button>
+          <a href="#/business" class="btn btn-quiet">Quote for a team</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 5 · For teams. The ground wipes from dark to bone. -->
-  <section id="business" class="teams" data-sc-act="flow" aria-labelledby="teams-title">
-    <div class="teams-panel" data-sc-reveal="up" data-sc-reveal-at="0.08 0.42">
+  <!-- 5 · For teams: pricing and the quote form, on the paper ground. -->
+  <section id="business" class="teams" aria-labelledby="teams-title">
+    <div class="teams-panel">
       <div class="teams-grid">
         <div class="teams-copy">
           <h2 id="teams-title" class="h-section">One quote for the whole team.</h2>
@@ -438,11 +434,11 @@
   </section>
 
   <!-- 6 · Questions, then the shop's address plate. -->
-  <section id="questions" class="close" data-sc-act="flow" aria-labelledby="faq-title">
-    <div class="close-wrap">
+  <section id="questions" class="close" aria-labelledby="faq-title">
+    <div class="wrap">
       <div class="faq">
         <h2 id="faq-title" class="h-section">Before you pay</h2>
-        <div class="faq-list" data-sc-in data-sc-stagger="60">
+        <div class="faq-list">
           <details><summary>Is the price on the label the final price?</summary><p>Yes. Labels show the full price in US dollars and delivery is free. Prices only go down: 10% off any line of 8 or more units, and the code WELCOME5 takes 5% off a first order.</p></details>
           <details><summary>Are the products new and genuine?</summary><p>Every device is sealed stock from authorised channels, and its serial number is printed on your receipt.</p></details>
           <details><summary>How does the warranty work?</summary><p>Every device has a 1-year warranty. Claims are handled by us at the Chennai store.</p></details>
@@ -578,7 +574,7 @@
 
 <!-- The address plate: typeset like a label, and the last thing on every page. -->
 <footer id="visit" class="visit">
-  <div class="visit-wrap">
+  <div class="visit-wrap wrap">
     <div class="visit-plate label">
       <span class="label-no">The shop</span>
       <h2 class="label-name visit-name">Zach Store, Chennai</h2>

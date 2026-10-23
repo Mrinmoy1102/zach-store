@@ -43,7 +43,7 @@ A dark "showroom" catalogue: every product hangs on the wall with a museum-style
 
 **SEO:** every product is plain HTML in `index.html` (readable by search engines without running JavaScript), with `ElectronicsStore`, `Product`/`Offer` and `FAQPage` structured data, Open Graph tags, a share image (`assets/og-image.jpg`) and `robots.txt`.
 
-**Tech:** plain HTML, CSS and JavaScript with no framework and no build step. Layout and theme are in `styles.css`, the product data and logic in `app.js`. Scroll effects come from `scrollcraft.js` / `scrollcraft.css` (vendored, unmodified); the page still works with motion reduced or scripts off.
+**Tech:** plain HTML, CSS and JavaScript with no framework and no build step. Brand values are in [`BRAND.md`](BRAND.md) and live as CSS variables at the top of `styles.css`, the product data and logic in `app.js`. Scroll effects come from `scrollcraft.js` / `scrollcraft.css` (vendored, unmodified); the page still works with motion reduced or scripts off.
 
 **Run it:** open `index.html`, or serve the folder:
 
@@ -114,6 +114,7 @@ index.html, app.js, styles.css                  storefront website
 scrollcraft.js, scrollcraft.css                 scroll-effects engine (vendored, unmodified)
 robots.txt                                      crawler rules
 assets/                                         logo, cleaned product plates, icons, share image
+BRAND.md                                        brand sheet: colours, type, voice
 scrollcraft/                                    design brief for the storefront
 Label Maker/                                    desktop app (label_maker.py core, app.pyw window, shortcut installer)
 sample-data/Sample_Inventory.xlsx               demo inventory (fake numbers)

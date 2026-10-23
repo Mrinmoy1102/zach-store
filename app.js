@@ -84,6 +84,7 @@
   };
   if (!(state.budget >= 10 && state.budget <= 2000)) state.budget = 500;
   let lastFocus = null;
+  let lastCount = Infinity; // no pulse on first paint
   // The scroll engine drives the home page's acts. Without it the page is still complete, just still.
   const sc = window.ScrollCraft ? window.ScrollCraft.mount(document.body) : null;
 
@@ -109,6 +110,9 @@
 
     const t = totals();
     setText('[data-cart-count]', t.count);
+    // Confirm an add: the bar's count pulses once.
+    if (t.count > lastCount) $$('.bar-cart-n').forEach(n => { n.classList.remove('is-bumped'); void n.offsetWidth; n.classList.add('is-bumped'); });
+    lastCount = t.count;
     syncProducts();
     renderTotals(t);
     renderCart(t);
@@ -543,7 +547,7 @@
     const obj = e.target.closest('.obj, .rail-end');
     if (!obj || reduceMotion()) return;
     const r = obj.getBoundingClientRect();
-    if (r.left >= 0 && r.right <= window.innerWidth) return;
+    if (r.left >= 0 && r.right <= window.innerWidth && r.top >= 0 && r.bottom <= window.innerHeight) return;
     window.scrollTo({ top: railTargetY(obj), behavior: 'instant' });
   });
   window.addEventListener('scroll', queueView, { passive: true });
