@@ -261,23 +261,26 @@ a { color: inherit; }
   padding-top: calc(var(--bar-h) + clamp(.5rem, 2vh, 1.5rem));
   background: var(--c-night);
 }
-.rail { align-self: center; justify-self: start; width: max-content; gap: clamp(1.5rem, 2.6vw, 2.75rem); padding-inline: var(--s-gutter); align-items: flex-start; }
+/* The rail fills the space between the bar and the ruler; cards never overflow it. */
+.rail { align-self: stretch; justify-self: start; width: max-content; min-height: 0; gap: clamp(1.5rem, 2.6vw, 2.75rem); padding: var(--s-2) var(--s-gutter); align-items: stretch; }
 .rail-lead { align-self: center; width: clamp(16rem, 26vw, 24rem); display: flex; flex-direction: column; gap: var(--s-4); padding-right: var(--s-4); }
 .rail-lead p { color: var(--c-pencil); max-width: 30ch; }
 .rail-end { align-self: center; width: clamp(15rem, 20vw, 19rem); display: flex; flex-direction: column; gap: var(--s-3); font-size: var(--t-sm); color: var(--c-pencil); }
 .rail-end-title { font-size: var(--t-xl); font-weight: var(--w-bold); color: var(--c-bone); }
 .rail-end a { color: var(--c-bone); }
 
-.obj { width: var(--w-obj); display: flex; flex-direction: column; gap: var(--s-3); transition: opacity var(--d-open) var(--ease), transform var(--d-open) var(--ease); transform-origin: 50% 60%; }
+.obj { width: var(--w-obj); min-height: 0; display: flex; flex-direction: column; justify-content: center; gap: var(--s-3); transition: opacity var(--d-open) var(--ease), transform var(--d-open) var(--ease); transform-origin: 50% 60%; }
 /* Plates are flat: the product is the image, the hero owns the depth. */
 .obj-plate {
   position: relative; aspect-ratio: 4 / 3; max-height: 30svh;
+  /* On a short window the photo gives up height first, so nothing is cut. */
+  flex: 0 1 auto; min-height: 5rem;
   border-radius: var(--r); background: var(--c-shelf);
   display: grid; place-items: center;
   transition: filter var(--d-open) var(--ease);
 }
 .obj-plate img { position: absolute; inset: var(--s-3); width: calc(100% - 2 * var(--s-3)); height: calc(100% - 2 * var(--s-3)); object-fit: contain; }
-.obj-plate--drawn svg { width: 72%; height: 82%; overflow: visible; }
+.obj-plate--drawn svg { position: absolute; inset: 9% 14% 16%; width: 72%; height: 75%; overflow: visible; }
 .obj-plate--drawn .ink { fill: none; stroke: var(--c-bone); stroke-width: 1.6; stroke-linejoin: round; stroke-linecap: round; opacity: .82; }
 .obj-plate--drawn .ink .thin { stroke-width: 1; opacity: .7; }
 .obj-plate--drawn .dim { fill: none; stroke: var(--c-sun); stroke-width: 1; opacity: .8; }
@@ -573,6 +576,15 @@ body.has-compare-bar.on-collection .compare-bar { bottom: 9.5rem; }
 @media (max-height: 760px) and (min-width: 901px) {
   .obj .label-note { display: none; }
   .obj-plate { max-height: 26svh; }
+}
+/* Very short windows: keep the two key specs; the rest is in Compare. */
+@media (max-height: 640px) and (min-width: 901px) {
+  .obj .label-facts > div:nth-child(n+3) { display: none; }
+  .obj { gap: var(--s-2); }
+  .obj-plate { min-height: 3rem; }
+  .obj-plate-note { display: none; }
+  .ruler { padding-block: var(--s-2); }
+  .ruler-sum { min-height: 0; }
 }
 
 /* ======================================================= reduced motion == */
